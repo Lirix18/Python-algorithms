@@ -16,13 +16,15 @@
 
 class StackClass:
     def __init__(self):
-        self.elems = [[], [], [], [], []]
+        self.elems = [[]]
 
     def push_in(self, el):
-        for i in range(0, len(self.elems) - 1, 1):
-            if len(self.elems[i]) < 5:
-                self.elems[i].append(el)
-                break
+        if len(self.elems[len(self.elems)-1]) < 6:
+            self.elems[len(self.elems)-1].append(el)
+        else:
+            self.elems.append([])
+            self.elems[len(self.elems) - 1].append(el)
+
 
     def pop_out(self):
         return self.elems.pop()
@@ -48,7 +50,7 @@ class Stack:
 if __name__ == '__main__':
     stack_1 = StackClass()
     i = 0
-    while i < 18:
+    while i < 34:
         stack_1.push_in(1 + i)
         i += 1
 
